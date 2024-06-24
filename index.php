@@ -5,7 +5,7 @@ class Movie
 {
     private string $title;
     private string $director;
-    private string $genres;
+    private array $genres;
     private int $year;
 
     public function __construct($_title, $_director, $_genres, $_year)
@@ -43,8 +43,8 @@ class Movie
     }
 }
 
-$movie1 = new Movie("Pulp Fiction", "Quentin Tarantino", "Crime/Thriller", 1994);
-$movie2 = new Movie("Titanic", "James Cameron", "Romance/Adventure", 1997);
+$movie1 = new Movie("Pulp Fiction", "Quentin Tarantino", ["Crime", "Thriller"], 1994);
+$movie2 = new Movie("Titanic", "James Cameron", ["Romance", "Adventure"], 1997);
 
 try {
     $movie1->setYear(2020);
@@ -55,13 +55,13 @@ try {
 // MOVIE 1
 echo $movie1->getTitle() . "<br>";
 echo  $movie1->getDirector() . "<br>";
-echo $movie1->getGenres() . "<br>";
+echo implode(", ", $movie1->getGenres()) . "<br>";
 echo $movie1->getYear() . "<br>";
 
 
 echo $movie2->getTitle() . "<br>";
 echo $movie2->getDirector() . "<br>";
-echo $movie2->getGenres() . "<br>";
+echo implode(", ", $movie2->getGenres()) . "<br>";
 echo $movie2->getYear() . "<br>";
 
 ?>
