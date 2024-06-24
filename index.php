@@ -16,6 +16,15 @@ class Movie
         $this->year = $_year;
     }
 
+    public function setYear($_year)
+    {
+        if (is_int($_year)) {
+            $this->year = $_year;
+        } else {
+            throw new Exception("Year must be an integer number!");
+        }
+    }
+
     public function getTitle()
     {
         return $this->title;
@@ -37,11 +46,18 @@ class Movie
 $movie1 = new Movie("Pulp Fiction", "Quentin Tarantino", "Crime/Thriller", 1994);
 $movie2 = new Movie("Titanic", "James Cameron", "Romance/Adventure", 1997);
 
+try {
+    $movie1->setYear(2020);
+} catch (Exception $error) {
+    echo $error->getMessage();
+}
+
 // MOVIE 1
 echo $movie1->getTitle() . "<br>";
 echo  $movie1->getDirector() . "<br>";
 echo $movie1->getGenres() . "<br>";
 echo $movie1->getYear() . "<br>";
+
 
 echo $movie2->getTitle() . "<br>";
 echo $movie2->getDirector() . "<br>";
