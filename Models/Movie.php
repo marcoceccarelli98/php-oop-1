@@ -26,6 +26,11 @@ class Movie
         }
     }
 
+    public function setGenre($_genre)
+    {
+        $this->genres = [...$this->genres, $_genre];
+    }
+
     public function setActor($_actor)
     {
         $this->actors = [...$this->actors, $_actor];

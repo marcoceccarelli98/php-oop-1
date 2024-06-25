@@ -13,11 +13,17 @@ $crime = new Genre("Crime", false, "yellow");
 $thriller = new Genre("Thriller", true, "orange");
 $romance = new Genre("Romance", false, "pink");
 $adventure = new Genre("Adventure", false, "green");
+$action = new Genre("Action", false, "red");
+
 
 // MOVIES
 $movie1 = new Movie("Pulp Fiction", "Quentin Tarantino", [$crime, $thriller], 1994, $actors1);
 $movie2 = new Movie("Titanic", "James Cameron", [$romance, $adventure], 1997, $actors2);
 
+// testing set genre
+$movie1->setGenre($action);
+
+// testing set actor
 $movie2->setActor(new Actor("Kate", "Winslet", 6));
 
 // MOVIE LIST
