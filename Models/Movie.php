@@ -8,9 +8,11 @@ class Movie
     private int $year;
     private array $actors;
 
+    public static string $movieTitle = "Movie";
+
     public static function getMovieTitle()
     {
-        return "Movie";
+        return Movie::$movieTitle;
     }
 
     public function __construct($_title, $_director, array $_genres, $_year, array $_actors)
