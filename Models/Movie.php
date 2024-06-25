@@ -8,6 +8,11 @@ class Movie
     private int $year;
     private array $actors;
 
+    public static function getMovieTitle()
+    {
+        return "Movie";
+    }
+
     public function __construct($_title, $_director, array $_genres, $_year, array $_actors)
     {
         $this->title = $_title;
@@ -17,7 +22,7 @@ class Movie
         $this->actors = $_actors;
     }
 
-    public function setYear($_year)
+    public function setYear($_year): void
     {
         if (is_int($_year)) {
             $this->year = $_year;
@@ -26,33 +31,32 @@ class Movie
         }
     }
 
-    public function setGenre($_genre)
+    public function setGenre($_genre): void
     {
         $this->genres = [...$this->genres, $_genre];
     }
-
-    public function setActor($_actor)
+    public function setActor($_actor): void
     {
         $this->actors = [...$this->actors, $_actor];
     }
 
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
-    public function getDirector()
+    public function getDirector(): string
     {
         return $this->director;
     }
-    public function getGenres()
+    public function getGenres(): array
     {
         return $this->genres;
     }
-    public function getYear()
+    public function getYear(): int
     {
         return $this->year;
     }
-    public function getActors()
+    public function getActors(): array
     {
         return $this->actors;
     }

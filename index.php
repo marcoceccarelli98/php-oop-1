@@ -48,7 +48,7 @@ try {
 
 <body>
     <div class="container">
-        <h1>MOVIES</h1>
+        <h1><?php echo Movie::getMovieTitle() ?></h1>
         <div class="movie-list" style="display: flex; gap: 30px;">
             <?php foreach ($movies as $movie) : ?>
                 <div class="card">

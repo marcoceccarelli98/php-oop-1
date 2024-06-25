@@ -13,15 +13,15 @@ class Genre
         $this->textColor = $_textColor;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
-    public function getNoMinor()
+    public function getNoMinor(): bool
     {
         return $this->noMinor;
     }
-    public function getTextColor()
+    public function getTextColor(): string
     {
         return $this->textColor;
     }
