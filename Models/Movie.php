@@ -8,13 +8,13 @@ class Movie
     private int $year;
     private array $actors;
 
-    public function __construct($_title, $_director, $_genres, $_year, array $actors)
+    public function __construct($_title, $_director, array $_genres, $_year, array $_actors)
     {
         $this->title = $_title;
         $this->director = $_director;
         $this->genres = $_genres;
         $this->year = $_year;
-        $this->actors = $actors;
+        $this->actors = $_actors;
     }
 
     public function setYear($_year)
@@ -24,6 +24,11 @@ class Movie
         } else {
             throw new Exception("Year must be an integer number!");
         }
+    }
+
+    public function setActor($_actor)
+    {
+        $this->actors = [...$this->actors, $_actor];
     }
 
     public function getTitle()

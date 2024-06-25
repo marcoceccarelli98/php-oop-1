@@ -2,13 +2,25 @@
 
 require_once __DIR__ . "/Models/Movie.php";
 require_once __DIR__ . "/Models/Actor.php";
+require_once __DIR__ . "/Models/Genre.php";
 
 $actors1 = [new Actor("John", "Travolta", 9), new Actor("Samuel L.", "Jackson", 7)];
 $actors2 = [new Actor("Leonardo", "Di Caprio", 8)];
 
-$movie1 = new Movie("Pulp Fiction", "Quentin Tarantino", ["Crime", "Thriller"], 1994, $actors1);
-$movie2 = new Movie("Titanic", "James Cameron", ["Romance", "Adventure"], 1997, $actors2);
 
+// GENRES
+$crime = new Genre("Crime", false, "yellow");
+$thriller = new Genre("Thriller", true, "orange");
+$romance = new Genre("Romance", false, "pink");
+$adventure = new Genre("Adventure", false, "green");
+
+// MOVIES
+$movie1 = new Movie("Pulp Fiction", "Quentin Tarantino", [$crime, $thriller], 1994, $actors1);
+$movie2 = new Movie("Titanic", "James Cameron", [$romance, $adventure], 1997, $actors2);
+
+$movie2->setActor(new Actor("Kate", "Winslet", 6));
+
+// MOVIE LIST
 $movies = [$movie1, $movie2];
 
 try {
@@ -34,9 +46,20 @@ try {
         <div class="movie-list" style="display: flex; gap: 30px;">
             <?php foreach ($movies as $movie) : ?>
                 <div class="card">
+                    <!-- TITLE -->
                     <h2><?php echo $movie->getTitle() ?></h2>
-                    <h3><?php echo implode(", ", $movie->getGenres()) ?></h3>
+
+                    <!-- GENRES -->
+                    <?php foreach ($movie->getGenres() as $genre) : ?>
+                        <span style="color: <?php echo $genre->getTextColor() ?>">
+                            <?php echo $genre->getName(); ?>
+                        </span>
+                    <?php endforeach; ?>
+
+                    <!-- ART DIRECTOR -->
                     <h4><?php echo $movie->getDirector() ?></h4>
+
+                    <!-- ACTORS -->
                     <?php foreach ($movie->getActors() as $actor) : ?>
                         <h5>
                             <?php echo $actor->getFirstName(); ?>
